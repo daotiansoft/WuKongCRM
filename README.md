@@ -1,5 +1,6 @@
 # WuKOngCRM
 9.0版本 thinkphp5+elementui
+php5.6 composer1.10.22(https://github.com/composer/composer/releases/tag/1.10.22)
 
 <!-- ### WukongCRM (Version 9.0)
 Wukong Software has long provided enterprises with information services such as R&D, implementation, marketing, consulting, training and service of enterprise management software (CRM/HRM/OA/ERP, etc.). We have taken high technology as its starting point, technology as the core, and perfect after-sales service as its backing. With the spirit of stability and development, factualism and innovation, it has provided services for thousands of enterprises at home and abroad.
