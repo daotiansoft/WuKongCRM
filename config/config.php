@@ -255,5 +255,21 @@ return [
     // 商业智能查询缓存时间（秒）
     'bi_cache_time' => 1800,
     // 商业智能慢查询查询时间（查询超过该时间进行数据缓存）（毫秒）
-    'bi_slow_query_time' => 500
+    'bi_slow_query_time' => 500,
+
+
+    "task_list"=>[
+        [
+            "name"=>"第一次回访",//任务名称
+            "description"=>"第一行\n第二行",//备注内容，换行用\n替代
+            "start_time"=>strtotime(date('Y-m-d')) + 60*60*24*2,//开始时间
+            "end_time"=>strtotime(date('Y-m-d')) + 60*60*24*2,//截至时间
+        ],
+        [
+            "name"=>"第二次回访",//任务名称
+            "description"=>"第一行\n第二行",//备注内容，换行用\n替代
+            "start_time"=>strtotime(date('Y-m-d')) + 60*60*24*7,//开始时间
+            "end_time"=>strtotime(date('Y-m-d')) + 60*60*24*7,//截至时间
+        ]
+    ],
 ];

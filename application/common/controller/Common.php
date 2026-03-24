@@ -39,11 +39,11 @@ class Common extends Controller
         $a = strtolower($request->action());     
         $this->m = $m;          
         $this->c = $c;          
-        $this->a = $a;          
+        $this->a = $a;
     }
 
     public function object_array($array) 
-    {  
+    {
         if (is_object($array)) {  
             $array = (array)$array;  
         } 

@@ -50,5 +50,6 @@ class ApiCommon extends Common
         // 更新缓存
         cache('Auth_'.$authKey, $cache, $loginExpire);           
         // $GLOBALS['userInfo'] = $userInfo;
+
     }
 }

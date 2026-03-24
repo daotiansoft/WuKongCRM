@@ -8,6 +8,7 @@
 namespace app\crm\controller;
 
 use app\admin\controller\ApiCommon;
+use think\facade\Config;
 use think\Hook;
 use think\Request;
 use think\Db;
@@ -50,7 +51,7 @@ class Customer extends ApiCommon
         $customerModel = model('Customer');
         $param = $this->param;
         $userInfo = $this->userInfo;
-        $param['user_id'] = $userInfo['id']; 
+        $param['user_id'] = $userInfo['id'];
         $data = $customerModel->getDataList($param);
         return resultArray(['data' => $data]);
     }
@@ -80,8 +81,29 @@ class Customer extends ApiCommon
         $param = $this->param;
         $userInfo = $this->userInfo;
         $param['create_user_id'] = $userInfo['id'];
-        $param['owner_user_id'] = $userInfo['id'];
+        $param['owner_user_id'] =  $userInfo['id'];
+        if(isset($param['crm_lwmdov'][0]) && intval($param['crm_lwmdov'][0]) > 0){
+            $param['owner_user_id'] = intval($param['crm_lwmdov'][0]);
+        }
+
         if ($res = $customerModel->createData($param)) {
+            $taskList = config('task_list');
+            foreach($taskList as $taskItem){
+                $taskData = [];
+                $taskData['main_user_id'] = $param['owner_user_id'];
+                $taskData['start_time'] = $taskItem['start_time'];
+                $taskData['stop_time'] = $taskItem['end_time'];
+                $taskData['priority'] = 0;
+                $taskData['name'] = $taskItem['name'];
+                $taskData['description'] = $taskItem['description'];
+                $taskData['customer_ids'][] = $res['customer_id'];
+
+                $taskModel = new \app\work\model\Task();
+                $taskData['create_user_id'] = $userInfo['id'];
+                $taskModel->createTask($taskData);
+            }
+
+
             return resultArray(['data' => $res]);
         } else {
             return resultArray(['error' => $customerModel->getError()]);

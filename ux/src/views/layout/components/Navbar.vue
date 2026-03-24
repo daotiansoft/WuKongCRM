@@ -21,24 +21,6 @@
         </router-link>
       </flexbox>
     </div>
-
-    <el-popover
-      :visible-arrow="false"
-      placement="bottom"
-      popper-class="no-padding-popover"
-      width="210"
-      trigger="hover">
-      <div class="auth-content">
-        <div class="title">您暂未开通授权</div>
-        <div class="detail">为了给您提供更好的服务支持<br>建议您购买官方授权</div>
-        <span class="phone">400-0812-558</span>
-      </div>
-      <button
-        slot="reference"
-        type="text"
-        class="auth-button">开通授权</button>
-    </el-popover>
-
     <el-popover
       :visible-arrow="false"
       placement="bottom"

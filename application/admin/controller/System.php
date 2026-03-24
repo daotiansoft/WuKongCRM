@@ -29,7 +29,8 @@ class System extends ApiCommon
 
     //信息列表
     public function index()
-    {   
+    {
+        return resultArray(['data' => []]);
         $systemModel = model('System');
         $data = $systemModel->getDataList();
         return resultArray(['data' => $data]);
